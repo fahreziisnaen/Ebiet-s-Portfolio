@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+  :root { --accent: #C8A96A; --portrait-filter: grayscale(1) contrast(1.05); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: #0C0C0D; color: #EDEAE4; font-family: Archivo, "Helvetica Neue", Helvetica, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: #EDEAE4; }
+  :focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+  ::selection { background: var(--accent); color: #0C0C0D; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: .001ms !important; transition-duration: .001ms !important; } }
+</style>
+</helmet>
+
+<div style="background:#0C0C0D;color:#EDEAE4;font-family:Archivo,'Helvetica Neue',sans-serif;min-height:100vh;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(12,12,13,0.82);border-bottom:1px solid rgba(237,234,228,0.09)">
+    <div style="width:100%;max-width:1440px;margin:0 auto;padding:16px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <a href="#top" style="color:#EDEAE4;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Ebiet Abdu Mubarok</a>
+      <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(16px,2.4vw,34px);flex-wrap:wrap">
+        <a href="#work" style="color:#8A8783;font-size:11px;letter-spacing:0.2em;text-transform:uppercase" style-hover="color:#EDEAE4">Work</a>
+        <a href="#capabilities" style="color:#8A8783;font-size:11px;letter-spacing:0.2em;text-transform:uppercase" style-hover="color:#EDEAE4">Capabilities</a>
+        <a href="#experience" style="color:#8A8783;font-size:11px;letter-spacing:0.2em;text-transform:uppercase" style-hover="color:#EDEAE4">Experience</a>
+        <a href="#about" style="color:#8A8783;font-size:11px;letter-spacing:0.2em;text-transform:uppercase" style-hover="color:#EDEAE4">About</a>
+        <a href="#contact" style="color:#8A8783;font-size:11px;letter-spacing:0.2em;text-transform:uppercase" style-hover="color:#EDEAE4">Contact</a>
+        <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(237,234,228,0.14);padding:7px 12px;border-radius:999px;white-space:nowrap;flex:none">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>
+          <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#B7B3AC">Open to work</span>
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(48px,8vw,110px) clamp(20px,5vw,72px) clamp(40px,6vw,80px)">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:flex-end">
+
+        <div data-reveal="1" style="flex:1 1 460px;min-width:0;overflow-wrap:anywhere">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin:0 0 clamp(24px,3vw,40px)">Creative Designer — Content Creator — Digital Marketer</p>
+          <h1 style="margin:0;font-weight:400;line-height:0.94;letter-spacing:-0.02em">
+            <span style="display:block;font-size:clamp(36px,5.6vw,92px);text-transform:uppercase;font-weight:500;letter-spacing:-0.035em">Brand systems,</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(40px,6.2vw,104px);color:#EDEAE4;letter-spacing:-0.01em;margin:0.02em 0">stories</span>
+            <span style="display:block;font-size:clamp(36px,5.6vw,92px);text-transform:uppercase;font-weight:500;letter-spacing:-0.035em">&amp; campaigns.</span>
+          </h1>
+          <p style="max-width:52ch;margin:clamp(28px,3.5vw,44px) 0 0;font-size:clamp(15px,1.2vw,17px);line-height:1.65;color:#A5A19A">A senior creative lead and digital marketing professional with over ten years across media, digital agencies and IT firms. I take brands end to end — identity, content, campaign — and make them hold together everywhere they appear.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,3.5vw,40px)">
+            <a href="#work" style="display:inline-flex;align-items:center;gap:12px;padding:15px 26px;border:1px solid var(--accent);color:var(--accent);font-size:11px;letter-spacing:0.2em;text-transform:uppercase" style-hover="background:var(--accent);color:#0C0C0D">Selected work <span>→</span></a>
+            <a href="#contact" style="display:inline-flex;align-items:center;gap:12px;padding:15px 26px;border:1px solid rgba(237,234,228,0.18);color:#B7B3AC;font-size:11px;letter-spacing:0.2em;text-transform:uppercase" style-hover="border-color:#EDEAE4;color:#EDEAE4">Get in touch</a>
+          </div>
+        </div>
+
+        <div data-reveal="1" style="flex:1 1 280px;min-width:0;max-width:480px;position:relative">
+          <div style="position:relative;overflow:hidden;border:1px solid rgba(237,234,228,0.1);background:#131315;aspect-ratio:3/4;max-height:78vh">
+            <img src="assets/portrait.png" alt="Portrait of Ebiet Abdu Mubarok" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:50% 45%;filter:var(--portrait-filter);transition:transform 1.2s cubic-bezier(.16,1,.3,1),filter .8s ease" style-hover="transform:scale(1.04);filter:none">
+            <div style="position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(12,12,13,0.92),rgba(12,12,13,0))"></div>
+            <div style="position:absolute;left:20px;right:20px;bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#B7B3AC">South Tangerang, ID</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#B7B3AC">Est. 2016</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div data-reveal="1" style="margin-top:clamp(48px,6vw,88px);border-top:1px solid rgba(237,234,228,0.09);padding-top:clamp(28px,3.5vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(24px,3vw,40px)">
+        <div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:#EDEAE4">10+</div>
+          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Years of experience</div>
+        </div>
+        <div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:#EDEAE4">2M</div>
+          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">TikTok followers grown</div>
+        </div>
+        <div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:#EDEAE4">16K</div>
+          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Instagram audience built</div>
+        </div>
+        <div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:#EDEAE4">+25%</div>
+          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Engagement lift, Terra Systems</div>
+        </div>
+      </div>
+    </section>
+
+    <div style="border-top:1px solid rgba(237,234,228,0.09);border-bottom:1px solid rgba(237,234,228,0.09);overflow:hidden;padding:16px 0">
+      <div style="display:flex;width:max-content;animation:marquee 42s linear infinite;will-change:transform">
+        <div style="display:flex;gap:44px;padding-right:44px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#8A8783;white-space:nowrap">
+          <span>Corporate identity</span><span style="color:var(--accent)">✦</span><span>Rebranding</span><span style="color:var(--accent)">✦</span><span>Social &amp; UI design</span><span style="color:var(--accent)">✦</span><span>Campaign collateral</span><span style="color:var(--accent)">✦</span><span>Photography</span><span style="color:var(--accent)">✦</span><span>Video editing</span><span style="color:var(--accent)">✦</span><span>Event production</span><span style="color:var(--accent)">✦</span>
+        </div>
+        <div aria-hidden="true" style="display:flex;gap:44px;padding-right:44px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:#8A8783;white-space:nowrap">
+          <span>Corporate identity</span><span style="color:var(--accent)">✦</span><span>Rebranding</span><span style="color:var(--accent)">✦</span><span>Social &amp; UI design</span><span style="color:var(--accent)">✦</span><span>Campaign collateral</span><span style="color:var(--accent)">✦</span><span>Photography</span><span style="color:var(--accent)">✦</span><span>Video editing</span><span style="color:var(--accent)">✦</span><span>Event production</span><span style="color:var(--accent)">✦</span>
+        </div>
+      </div>
+    </div>
+
+    <section id="work" style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px)">
+      <div data-reveal="1" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid rgba(237,234,228,0.09);padding-bottom:22px">
+        <h2 style="margin:0;font-size:clamp(30px,4.6vw,62px);font-weight:500;letter-spacing:-0.03em;text-transform:uppercase">Selected work</h2>
+        <p style="margin:0;max-width:40ch;font-size:13px;line-height:1.6;color:#8A8783">Four bodies of work that define how I operate: identity first, content at scale, and production that actually ships.</p>
+      </div>
+
+      <article data-reveal="1" style="margin-top:clamp(36px,4.5vw,64px)">
+        <button type="button" onClick="{{ toggle0 }}" aria-expanded="{{ o0 }}" style="all:unset;display:block;width:100%;cursor:pointer">
+          <div style="position:relative;overflow:hidden;border:1px solid rgba(237,234,228,0.1);background:#111113">
+            <div style="aspect-ratio:21/9;min-height:220px;background:repeating-linear-gradient(135deg,#171719 0 12px,#121214 12px 24px);transition:transform 1.1s cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.03)"></div>
+            <span style="position:absolute;left:22px;top:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8783">[ brand identity artwork ]</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;align-items:start;padding-top:22px">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Brand identity — Terra Systems, Pte Ltd</div>
+              <h3 style="margin:12px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.6vw,48px);font-weight:400;letter-spacing:-0.01em;line-height:1.05">B2B Cybersecurity Brand System</h3>
+            </div>
+            <div style="display:flex;justify-content:space-between;gap:20px;align-items:flex-start">
+              <p style="margin:0;max-width:46ch;font-size:14px;line-height:1.7;color:#A5A19A">Company-wide branding and rebranding for a Singapore cybersecurity and IT solutions firm, carried across international markets, expo environments and distributor channels.</p>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8A8783;white-space:nowrap">2023 — 2026</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;padding-top:16px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)"><span>Read case study</span><span>→</span></div>
+        </button>
+        <sc-if value="{{ o0 }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:24px;border-top:1px solid rgba(237,234,228,0.12);padding-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3vw,48px)">
+            <div>
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Overview</div>
+              <dl style="margin:16px 0 0;display:grid;gap:12px;font-size:14px">
+                <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(237,234,228,0.07);padding-bottom:10px"><dt style="color:#8A8783">Client</dt><dd style="margin:0;color:#EDEAE4;text-align:right">Terra Systems, Pte Ltd — Singapore</dd></div>
+                <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(237,234,228,0.07);padding-bottom:10px"><dt style="color:#8A8783">Role</dt><dd style="margin:0;color:#EDEAE4;text-align:right">Creative Designer</dd></div>
+                <div style="display:flex;justify-content:space-between;gap:16px"><dt style="color:#8A8783">Deliverables</dt><dd style="margin:0;color:#EDEAE4;text-align:right">Identity, marketing collateral, UI elements, social content, expo booths</dd></div>
+              </dl>
+            </div>
+            <div style="display:grid;gap:22px">
+              <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Challenge</div><p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">A technical B2B offer needed a market position clear enough to travel across international markets and channel partners.</p></div>
+              <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Approach</div><p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Led branding and rebranding company-wide, then extended it into multi-channel marketing collateral, UI elements and social content rather than a static logo package.</p></div>
+              <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Outcome</div><p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">A 25% increase in audience engagement, plus aligned global campaign standards across distributor promotional assets.</p></div>
+            </div>
+          </div>
+        </sc-if>
+      </article>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,3.5vw,56px);margin-top:clamp(48px,6vw,96px)">
+
+        <article data-reveal="1">
+          <button type="button" onClick="{{ toggle1 }}" aria-expanded="{{ o1 }}" style="all:unset;display:block;width:100%;cursor:pointer">
+            <div style="position:relative;overflow:hidden;border:1px solid rgba(237,234,228,0.1);background:#111113">
+              <div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#171719 0 12px,#121214 12px 24px);transition:transform 1.1s cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.03)"></div>
+              <span style="position:absolute;left:18px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8783">[ rebrand artwork ]</span>
+            </div>
+            <div style="padding-top:20px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Corporate rebranding — Amartha Corp</div>
+              <h3 style="margin:10px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.1">Brand Standardization Across Subsidiaries</h3>
+              <p style="margin:12px 0 0;font-size:14px;line-height:1.7;color:#A5A19A">Redesigned the corporate identity and standardized visual assets across marketing channels for the parent company and its subsidiaries.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#8A8783"><span>Surabaya</span><span>2022</span></div>
+            </div>
+          </button>
+          <sc-if value="{{ o1 }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:20px;border-top:1px solid rgba(237,234,228,0.12);padding-top:22px;display:grid;gap:18px">
+              <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Role</div><p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Creatives Lead — owned the corporate rebranding process and overall visual strategy across marketing materials.</p></div>
+              <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Approach</div><p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Set one visual system for parent and subsidiaries, then held it in place with team KPIs aligned to executive directives and supervised daily project workflows.</p></div>
+            </div>
+          </sc-if>
+        </article>
+
+        <article data-reveal="1">
+          <button type="button" onClick="{{ toggle2 }}" aria-expanded="{{ o2 }}" style="all:unset;display:block;width:100%;cursor:pointer">
+            <div style="position:relative;overflow:hidden;border:1px solid rgba(237,234,228,0.1);background:#111113">
+              <div style="aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#171719 0 12px,#121214 12px 24px);transition:transform 1.1s cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.03)"></div>
+              <span style="position:absolute;left:18px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8783">[ campaign stills ]</span>
+            </div>
+            <div style="padding-top:20px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Campaign — Influencer marketing</div>
+              <h3 style="margin:10px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.1">End-to-End KOL Campaigns</h3>
+              <p style="margin:12px 0 0;font-size:14px;line-height:1.7;color:#A5A19A">KOL acquisition, contract negotiation and campaign execution to expand brand reach and lift social media engagement.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#8A8783"><span>Amartha Corp</span><span>2022</span></div>
+            </div>
+          </button>
+          <sc-if value="{{ o2 }}" hint-placeholder-val="{{ false }}">
+            <div style="margin-top:20px;border-top:1px solid rgba(237,234,228,0.12);padding-top:22px;display:grid;gap:18px">
+              <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Scope</div><p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Sourced, negotiated with and managed KOLs and influencers to expand brand exposure across digital platforms.</p></div>
+              <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Output</div><p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Video ads and creative visual content produced and directed for multichannel digital marketing.</p></div>
+            </div>
+          </sc-if>
+        </article>
+
+      </div>
+
+      <article data-reveal="1" style="margin-top:clamp(48px,6vw,96px)">
+        <button type="button" onClick="{{ toggle3 }}" aria-expanded="{{ o3 }}" style="all:unset;display:block;width:100%;cursor:pointer">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,3vw,48px);align-items:center">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Digital content — Jawa Pos Radar Bojonegoro</div>
+              <h3 style="margin:14px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.4vw,46px);font-weight:400;line-height:1.05">Growing a Regional Newsroom to 2M</h3>
+              <p style="margin:16px 0 0;max-width:48ch;font-size:15px;line-height:1.7;color:#A5A19A">Six years of daily editorial layout, social visual assets and content strategy across print and online — Instagram to 16K, TikTok to 2M.</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:20px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)"><span>Read case study</span><span>→</span></div>
+            </div>
+            <div style="position:relative;overflow:hidden;border:1px solid rgba(237,234,228,0.1);background:#111113">
+              <div style="aspect-ratio:5/4;background:repeating-linear-gradient(135deg,#171719 0 12px,#121214 12px 24px);transition:transform 1.1s cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.03)"></div>
+              <span style="position:absolute;left:18px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8783">[ social &amp; editorial layouts ]</span>
+            </div>
+          </div>
+        </button>
+        <sc-if value="{{ o3 }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:24px;border-top:1px solid rgba(237,234,228,0.12);padding-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(24px,3vw,48px)">
+            <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Role</div><p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Digital &amp; Creative Lead, formerly Graphic Designer. June 2016 — January 2022.</p></div>
+            <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Approach</div><p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Ran digital marketing and content strategy across online and print, designed daily newspaper layouts with journalists, and built social visual assets and event collateral with sales and internal divisions.</p></div>
+            <div><div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Outcome</div><p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:#A5A19A">Organic reach grown to 16K on Instagram and 2M on TikTok, alongside representing the company in stakeholder meetings and partnership pitches.</p></div>
+          </div>
+        </sc-if>
+      </article>
+
+      <p data-reveal="1" style="margin:clamp(40px,5vw,72px) 0 0;font-size:14px;color:#8A8783;line-height:1.7">Full project imagery lives on Behance — <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" style="border-bottom:1px solid rgba(200,169,106,0.4)">behance.net/ebietmubharak</a></p>
+    </section>
+
+    <section id="capabilities" style="border-top:1px solid rgba(237,234,228,0.09);background:#0A0A0B">
+      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,130px) clamp(20px,5vw,72px)">
+        <div data-reveal="1" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+          <h2 style="margin:0;font-size:clamp(30px,4.6vw,62px);font-weight:500;letter-spacing:-0.03em;text-transform:uppercase">Capabilities</h2>
+          <p style="margin:0;max-width:38ch;font-size:13px;line-height:1.6;color:#8A8783">What I am hired for, and what I hand over.</p>
+        </div>
+        <div data-reveal="1" style="margin-top:clamp(36px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:rgba(237,234,228,0.09);border:1px solid rgba(237,234,228,0.09)">
+          <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="6">
+            <div style="background:#0A0A0B;padding:clamp(24px,2.6vw,36px);transition:background .5s ease" style-hover="background:#111113">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#8A8783">{{ c.num }}</span>
+                <span style="width:7px;height:7px;background:var(--accent);display:inline-block"></span>
+              </div>
+              <h3 style="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">{{ c.title }}</h3>
+              <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:#8A8783">{{ c.desc }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px)">
+      <div data-reveal="1" style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid rgba(237,234,228,0.09);padding-bottom:22px">
+        <h2 style="margin:0;font-size:clamp(30px,4.6vw,62px);font-weight:500;letter-spacing:-0.03em;text-transform:uppercase">Experience</h2>
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8A8783">2016 — Present</p>
+      </div>
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+        <div data-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid rgba(237,234,228,0.09);transition:background .5s ease" style-hover="background:rgba(237,234,228,0.02)">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex:none"></span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B7B3AC">{{ r.span }}</span>
+          </div>
+          <div>
+            <h3 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">{{ r.company }}</h3>
+            <div style="margin-top:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">{{ r.title }}</div>
+            <div style="margin-top:6px;font-size:12px;color:#8A8783">{{ r.place }}</div>
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.7;color:#A5A19A;max-width:52ch">{{ r.desc }}</p>
+        </div>
+      </sc-for>
+    </section>
+
+    <section id="about" style="border-top:1px solid rgba(237,234,228,0.09);background:#0A0A0B">
+      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,88px)">
+        <div data-reveal="1">
+          <p style="margin:0 0 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent)">About</p>
+          <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,54px);line-height:1.15;letter-spacing:-0.01em">I started in a newsroom, laying out pages on deadline. That habit never left.</h2>
+        </div>
+        <div data-reveal="1" style="display:grid;gap:22px;align-content:start">
+          <p style="margin:0;font-size:16px;line-height:1.75;color:#A5A19A">Ten years on, the work spans media, digital agencies and IT firms — but the method is the same. Understand the business, build the system, then produce everything the system needs: identity, campaign collateral, social content, UI, photography, video.</p>
+          <p style="margin:0;font-size:16px;line-height:1.75;color:#A5A19A">I have run end-to-end company rebrands, led creative teams against executive KPIs, negotiated with influencers, and directed live stage production for events of 1,500+ people. Strategy and execution are not separate jobs to me.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:14px;border-top:1px solid rgba(237,234,228,0.09);padding-top:26px">
+            <div>
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Education</div>
+              <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#EDEAE4">Bachelor's Degree in Management<br><span style="color:#8A8783">STIE Cendekia Bojonegoro</span></p>
+            </div>
+            <div>
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Languages</div>
+              <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:#EDEAE4">Indonesian — native<br><span style="color:#8A8783">English — professional</span></p>
+            </div>
+          </div>
+          <div style="border-top:1px solid rgba(237,234,228,0.09);padding-top:26px">
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Toolkit</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+              <sc-for list="{{ tools }}" as="t" hint-placeholder-count="9">
+                <span style="border:1px solid rgba(237,234,228,0.14);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">{{ t }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="border-top:1px solid rgba(237,234,228,0.09)">
+      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,160px) clamp(20px,5vw,72px)">
+        <div data-reveal="1">
+          <h2 style="margin:0;font-weight:500;line-height:0.98;letter-spacing:-0.035em">
+            <span style="display:block;font-size:clamp(36px,7vw,100px);text-transform:uppercase">Let's make something</span>
+            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(40px,7.6vw,110px);letter-spacing:-0.01em">worth remembering.</span>
+          </h2>
+        </div>
+        <div data-reveal="1" style="margin-top:clamp(40px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(24px,3vw,48px);border-top:1px solid rgba(237,234,228,0.09);padding-top:clamp(28px,3.5vw,44px)">
+          <div>
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Email</div>
+            <a href="mailto:ebietabdumubarok@gmail.com" style="display:inline-block;margin-top:12px;font-size:clamp(15px,1.4vw,18px);color:#EDEAE4;border-bottom:1px solid rgba(237,234,228,0.22)" style-hover="border-color:var(--accent);color:var(--accent)">ebietabdumubarok@gmail.com</a>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Phone</div>
+            <a href="tel:+6281358864574" style="display:inline-block;margin-top:12px;font-size:clamp(15px,1.4vw,18px);color:#EDEAE4;border-bottom:1px solid rgba(237,234,228,0.22)" style-hover="border-color:var(--accent);color:var(--accent)">+62 813 5886 4574</a>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Portfolio</div>
+            <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:12px;font-size:clamp(15px,1.4vw,18px);color:#EDEAE4;border-bottom:1px solid rgba(237,234,228,0.22)" style-hover="border-color:var(--accent);color:var(--accent)">behance.net/ebietmubharak</a>
+          </div>
+          <div>
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:#8A8783">Based in</div>
+            <p style="margin:12px 0 0;font-size:clamp(15px,1.4vw,18px);color:#EDEAE4">South Tangerang, Indonesia</p>
+          </div>
+        </div>
+        <div data-reveal="1" style="margin-top:clamp(36px,4vw,56px)">
+          <a href="mailto:ebietabdumubarok@gmail.com" style="display:inline-flex;align-items:center;gap:14px;padding:18px 34px;background:var(--accent);color:#0C0C0D;font-size:12px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600" style-hover="background:#EDEAE4;color:#0C0C0D">Get in touch <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="border-top:1px solid rgba(237,234,228,0.09)">
+    <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(28px,3vw,44px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center">
+      <div>
+        <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:#EDEAE4">Ebiet Abdu Mubarok</div>
+        <div style="margin-top:6px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8A8783">Creative Designer — Content Creator — Digital Marketer</div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap">
+        <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#8A8783" style-hover="color:#EDEAE4">Behance</a>
+        <a href="mailto:ebietabdumubarok@gmail.com" style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#8A8783" style-hover="color:#EDEAE4">Email</a>
+        <a href="#top" style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#8A8783" style-hover="color:#EDEAE4">Back to top ↑</a>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8A8783">© 2026</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C8A96A&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C8A96A&quot;,&quot;#D6553C&quot;,&quot;#7FA5A3&quot;,&quot;#EDEAE4&quot;],&quot;section&quot;:&quot;Art direction&quot;},&quot;portraitTreatment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Grayscale&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;Grayscale&quot;,&quot;Warm duotone&quot;,&quot;Full colour&quot;],&quot;section&quot;:&quot;Art direction&quot;}}">
+class Component extends DCLogic {
+  state = { open: null };
+
+  applyVars() {
+    const el = document.documentElement;
+    el.style.setProperty('--accent', this.props.accent ?? '#C8A96A');
+    const p = this.props.portraitTreatment ?? 'Grayscale';
+    el.style.setProperty('--portrait-filter',
+      p === 'Full colour' ? 'none' :
+      p === 'Warm duotone' ? 'grayscale(1) sepia(0.45) contrast(1.06)' :
+      'grayscale(1) contrast(1.05)');
+  }
+
+  attachReveals() {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    if (!this._io) {
+      this._io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'none';
+            this._io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    }
+    document.querySelectorAll('[data-reveal]:not([data-revealed])').forEach((el) => {
+      el.setAttribute('data-revealed', '1');
+      const r = el.getBoundingClientRect();
+      if (r.top > window.innerHeight * 0.92) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(26px)';
+        el.style.transition = 'opacity 1s cubic-bezier(.16,1,.3,1), transform 1s cubic-bezier(.16,1,.3,1)';
+        this._io.observe(el);
+      }
+    });
+  }
+
+  scheduleReveals() {
+    clearTimeout(this._revealTimer);
+    this._revealTimer = setTimeout(() => {
+      requestAnimationFrame(() => this.attachReveals());
+    }, 120);
+  }
+
+  componentDidMount() { this.applyVars(); this.scheduleReveals(); }
+  componentDidUpdate() { this.applyVars(); this.scheduleReveals(); }
+  componentWillUnmount() { clearTimeout(this._revealTimer); if (this._io) this._io.disconnect(); }
+
+  toggle(i) { this.setState((s) => ({ open: s.open === i ? null : i })); }
+
+  renderVals() {
+    const o = this.state.open;
+    return {
+      o0: o === 0, o1: o === 1, o2: o === 2, o3: o === 3,
+      toggle0: () => this.toggle(0),
+      toggle1: () => this.toggle(1),
+      toggle2: () => this.toggle(2),
+      toggle3: () => this.toggle(3),
+      capabilities: [
+        { num: '01', title: 'Brand Identity', desc: 'Corporate identity and rebranding, from core system to the rules that keep it consistent across subsidiaries and channels.' },
+        { num: '02', title: 'Social & UI Design', desc: 'Social media creatives, website and UI layouts built for a content calendar, not a one-off launch.' },
+        { num: '03', title: 'Campaign Design', desc: 'Multi-channel collateral, pitch decks and sales enablement material aligned with brand managers.' },
+        { num: '04', title: 'Content Strategy', desc: 'Audience engagement, copywriting and analytics-led planning across organic and paid channels.' },
+        { num: '05', title: 'Photography & Video', desc: 'Commercial photography, end-to-end video editing and directed ad production for digital campaigns.' },
+        { num: '06', title: 'Event Production', desc: 'Floor and stage coordination, rundown execution, technical setup, vendor and talent handling.' }
+      ],
+      roles: [
+        { span: 'May 2026 — Present', company: 'Freelance Event Organizer', title: 'Floor Director', place: 'Jakarta', desc: 'End-to-end event operations and backstage execution for national events of 1,500+ attendees, including rundown timing, stage production, talent logistics, and live technical setups for awarding events and organizational congresses.' },
+        { span: 'May 2023 — May 2026', company: 'Terra Systems, Pte Ltd', title: 'Creative Designer', place: 'Singapore', desc: 'Led company-wide branding for B2B cybersecurity and IT solutions across international markets, producing marketing collateral, UI elements, social content, expo booth concepts and distributor assets.' },
+        { span: 'Aug 2022 — May 2023', company: 'Sinar Media Digitama', title: 'Creatives Lead', place: 'South Tangerang', desc: 'Built consistent brand identities and produced marketing assets, pitch decks and sales enablement material with brand managers, plus end-to-end multimedia: social creatives, UI layouts, booth designs, video and commercial photography.' },
+        { span: 'Jan 2022 — Aug 2022', company: 'Amartha Corp', title: 'Creatives Lead', place: 'Surabaya', desc: 'Managed corporate rebranding and visual strategy for the parent company and its subsidiaries, sourced and negotiated with KOLs, directed video ads, and set team KPIs against executive directives.' },
+        { span: 'Jun 2016 — Jan 2022', company: 'Jawa Pos Radar Bojonegoro', title: 'Digital & Creative Lead (formerly Graphic Designer)', place: 'Bojonegoro', desc: 'Grew organic reach to 16K on Instagram and 2M on TikTok, ran digital marketing and content strategy across online and print, designed daily newspaper layouts with journalists, and pitched strategic partnerships.' }
+      ],
+      tools: ['Photoshop', 'Illustrator', 'InDesign', 'After Effects', 'Figma', 'Canva', 'CorelDRAW', 'CapCut', 'Magnific']
+    };
+  }
+}
+</script>
+</body>
+</html>

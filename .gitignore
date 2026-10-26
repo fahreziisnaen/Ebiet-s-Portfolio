@@ -1,0 +1,20 @@
+# OS and Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+*~
+
+# Large archive exports / backups
+*.zip
+
+# Design tool metadata & thumbnail artifacts
+.thumbnail
+
+# Environment / Logs / Redundant folders
+node_modules/
+__pycache__/
+*.log
+.vscode/
+.idea/
+uploads/
