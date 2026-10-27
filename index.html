@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ebiet Abdu Mubarok — Creative Designer, Content Creator &amp; Digital Marketer</title>
   
   <!-- SEO & Social Meta Tags (Open Graph / WhatsApp / LinkedIn / Twitter) -->
@@ -12,7 +12,7 @@
   <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ebiet Abdu Mubarok — Creative Designer &amp; Digital Marketer">
-  <meta property="og:description" content="Brand systems, stories &amp; campaigns. Over 10 years of experience across media, agencies, and tech firms.">
+  <meta property="og:description" content="Brand systems, stories &amp; campaigns. Over 10 years of experience leading brand identity, digital marketing, and multimedia production.">
   <meta property="og:image" content="assets/og-preview.jpg">
   <meta property="og:image:secure_url" content="assets/og-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -35,24 +35,26 @@
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
 
   <style>
     :root {
       --accent: #C8A96A;
       --accent-hover: #dfc288;
+      --accent-dim: rgba(200, 169, 106, 0.12);
       --bg-dark: #0C0C0D;
       --bg-surface: #131315;
-      --bg-surface-elevated: #171719;
+      --bg-surface-elevated: #18181B;
       --text-primary: #EDEAE4;
       --text-secondary: #A5A19A;
       --text-muted: #8A8783;
       --border-subtle: rgba(237, 234, 228, 0.09);
       --border-medium: rgba(237, 234, 228, 0.16);
       --portrait-filter: grayscale(1) contrast(1.05);
+      --header-height: 64px;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
@@ -69,11 +71,14 @@
       overflow-x: hidden;
       line-height: 1.5;
     }
+    body.menu-open {
+      overflow: hidden;
+    }
 
     a {
       color: var(--accent);
       text-decoration: none;
-      transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.15s ease;
     }
     a:hover { color: var(--text-primary); }
 
@@ -93,7 +98,15 @@
     }
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.3); opacity: 0.7; }
+      50% { transform: scale(1.35); opacity: 0.65; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes drawerSlideDown {
+      from { opacity: 0; transform: translateY(-12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -101,22 +114,195 @@
       * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
     }
 
-    /* Header Nav Links */
+    /* Header & Navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(12, 12, 13, 0.88);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background 0.3s ease;
+    }
+    .header-container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 72px);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand-logo {
+      color: var(--text-primary);
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Desktop Navigation Links */
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.2vw, 32px);
+    }
     .nav-link {
       color: var(--text-muted);
       font-size: 11px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       transition: color 0.2s ease;
+      white-space: nowrap;
+      padding: 6px 0;
     }
     .nav-link:hover {
       color: var(--text-primary);
     }
 
-    /* Primary & Secondary Buttons */
+    /* Status Pill Badge */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-medium);
+      padding: 6px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex: none;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+      animation: pulse 2s infinite ease-in-out;
+    }
+    .status-text {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #B7B3AC;
+      font-weight: 500;
+    }
+
+    /* Mobile Menu Toggle Button (Hamburger) */
+    .mobile-controls {
+      display: none;
+    }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-medium);
+      border-radius: 4px;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      position: relative;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      padding: 0;
+      color: var(--text-primary);
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .mobile-menu-btn:hover {
+      border-color: var(--accent);
+      background: rgba(200, 169, 106, 0.08);
+    }
+    .hamburger-line {
+      width: 20px;
+      height: 1.5px;
+      background: var(--text-primary);
+      transition: transform 0.3s ease, opacity 0.2s ease;
+      transform-origin: center;
+    }
+    .mobile-menu-btn.is-active .hamburger-line:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+      background: var(--accent);
+    }
+    .mobile-menu-btn.is-active .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-btn.is-active .hamburger-line:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+      background: var(--accent);
+    }
+
+    /* Mobile Drawer Overlay */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(12, 12, 13, 0.97);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      z-index: 75;
+      padding: 24px 24px 36px;
+      overflow-y: auto;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: drawerSlideDown 0.3s cubic-bezier(.16, 1, .3, 1) forwards;
+    }
+    .mobile-drawer.is-open {
+      display: flex;
+    }
+    .mobile-nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .mobile-nav-item a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: 32px;
+      color: var(--text-primary);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: color 0.2s ease, padding 0.2s ease;
+    }
+    .mobile-nav-item a:active {
+      color: var(--accent);
+      padding-left: 6px;
+    }
+    .mobile-nav-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      font-style: normal;
+    }
+    .mobile-drawer-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* Buttons */
     .btn-primary {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       padding: 14px 26px;
       background: var(--accent);
@@ -128,16 +314,21 @@
       border: 1px solid var(--accent);
       transition: all 0.25s ease;
       cursor: pointer;
+      min-height: 48px;
     }
     .btn-primary:hover {
       background: var(--text-primary);
       border-color: var(--text-primary);
       color: #0C0C0D;
     }
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
 
     .btn-secondary {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       padding: 14px 26px;
       border: 1px solid var(--border-medium);
@@ -148,16 +339,22 @@
       font-weight: 500;
       transition: all 0.25s ease;
       cursor: pointer;
+      min-height: 48px;
+      background: transparent;
     }
     .btn-secondary:hover {
       border-color: var(--text-primary);
       color: var(--text-primary);
       background: rgba(237, 234, 228, 0.04);
     }
+    .btn-secondary:active {
+      transform: scale(0.98);
+    }
 
     .btn-cv {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       padding: 14px 24px;
       border: 1px solid var(--accent);
@@ -167,10 +364,39 @@
       text-transform: uppercase;
       font-weight: 500;
       transition: all 0.25s ease;
+      min-height: 48px;
+      background: rgba(200, 169, 106, 0.05);
     }
     .btn-cv:hover {
       background: var(--accent);
       color: #0C0C0D;
+    }
+    .btn-cv:active {
+      transform: scale(0.98);
+    }
+
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      color: #25D366;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      min-height: 48px;
+      background: rgba(37, 211, 102, 0.06);
+    }
+    .btn-wa:hover {
+      background: #25D366;
+      color: #0C0C0D;
+    }
+    .btn-wa:active {
+      transform: scale(0.98);
     }
 
     /* Work Card Image Container */
@@ -179,6 +405,7 @@
       overflow: hidden;
       border: 1px solid var(--border-subtle);
       background: #111113;
+      border-radius: 4px;
     }
     .work-card-media img {
       width: 100%;
@@ -234,10 +461,6 @@
     .case-study-details.is-open {
       display: grid;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
     /* Scroll Reveals */
     [data-reveal] {
@@ -250,47 +473,273 @@
       opacity: 1;
       transform: none;
     }
+
+    /* Mobile Floating Quick Connect Bar */
+    .floating-quick-bar {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      z-index: 70;
+      background: rgba(18, 18, 20, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(200, 169, 106, 0.35);
+      border-radius: 999px;
+      padding: 6px 8px;
+      gap: 6px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s cubic-bezier(.16, 1, .3, 1), opacity 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .floating-quick-bar.is-visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .floating-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .floating-btn-primary {
+      background: var(--accent);
+      color: #0C0C0D;
+    }
+    .floating-btn-wa {
+      background: rgba(37, 211, 102, 0.15);
+      color: #25D366;
+      border: 1px solid rgba(37, 211, 102, 0.4);
+    }
+
+    /* Section Layout Utilities */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 22px;
+    }
+    .section-title {
+      margin: 0;
+      font-size: clamp(30px, 4.6vw, 62px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      line-height: 1.05;
+    }
+
+    /* -------------------------------------------------------------
+       MOBILE RESPONSIVE MEDIA QUERIES (max-width: 900px & 600px)
+       ------------------------------------------------------------- */
+    @media (max-width: 900px) {
+      .desktop-nav {
+        display: none !important;
+      }
+      .mobile-controls {
+        display: flex !important;
+        align-items: center;
+        flex-shrink: 0;
+      }
+      .mobile-menu-btn {
+        display: flex !important;
+      }
+      .header-container {
+        padding: 0 16px;
+      }
+      .brand-logo {
+        font-size: 13px;
+        letter-spacing: 0.1em;
+      }
+      .mobile-status-pill {
+        display: none !important;
+      }
+      .floating-quick-bar {
+        display: inline-flex;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-grid {
+        flex-direction: column !important;
+        gap: 32px !important;
+      }
+      .hero-cta-group {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 12px !important;
+      }
+      .hero-cta-group a {
+        width: 100%;
+      }
+      .section-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+      }
+      .stats-grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 14px 12px !important;
+      }
+      .case-study-details {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+      .work-card-media {
+        aspect-ratio: 16/10 !important;
+        min-height: 200px !important;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .contact-actions {
+        display: grid !important;
+        grid-template-columns: 1fr;
+        width: 100%;
+        gap: 12px !important;
+      }
+      .contact-actions a {
+        width: 100%;
+      }
+      .experience-item {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title-main {
+        font-size: clamp(34px, 11vw, 48px) !important;
+      }
+      .hero-title-italic {
+        font-size: clamp(38px, 12vw, 54px) !important;
+      }
+      .stats-grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px 14px !important;
+      }
+      .stat-num-value {
+        font-size: clamp(32px, 9vw, 42px) !important;
+      }
+      .contact-card-title {
+        font-size: clamp(32px, 8.5vw, 44px) !important;
+      }
+    }
   </style>
 </head>
 <body>
 
   <!-- Sticky Header -->
-  <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(12,12,13,0.84);border-bottom:1px solid var(--border-subtle)">
-    <div style="width:100%;max-width:1440px;margin:0 auto;padding:16px clamp(20px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
-      <a href="#top" style="color:var(--text-primary);font-size:14px;letter-spacing:0.14em;text-transform:uppercase;font-weight:500;white-space:nowrap">Ebiet Abdu Mubarok</a>
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#top" class="brand-logo">
+        <span>Ebiet Abdu Mubarok</span>
+      </a>
       
-      <nav aria-label="Primary" style="display:flex;align-items:center;gap:clamp(16px,2.2vw,32px);flex-wrap:wrap">
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav" aria-label="Primary">
         <a href="#work" class="nav-link">Work</a>
         <a href="#capabilities" class="nav-link">Capabilities</a>
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link">Contact</a>
         <a href="CV_Ebiet Abdu Mubarok.pdf" target="_blank" rel="noopener noreferrer" class="nav-link" style="color:var(--accent);font-weight:500" title="View or Download CV (PDF)">Resume / CV ↗</a>
-        <span style="display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border-medium);padding:6px 12px;border-radius:999px;white-space:nowrap;flex:none">
-          <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;animation:pulse 2s infinite ease-in-out"></span>
-          <span style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#B7B3AC">Open to work</span>
+        <span class="status-pill">
+          <span class="status-dot"></span>
+          <span class="status-text">Open to work</span>
         </span>
       </nav>
+
+      <!-- Mobile Right Controls (Hamburger) -->
+      <div class="mobile-controls">
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul class="mobile-nav-list">
+      <li class="mobile-nav-item">
+        <a href="#work" class="mobile-nav-link">
+          <span>Selected Work</span>
+          <span class="mobile-nav-num">01</span>
+        </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#capabilities" class="mobile-nav-link">
+          <span>Capabilities</span>
+          <span class="mobile-nav-num">02</span>
+        </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#experience" class="mobile-nav-link">
+          <span>Experience</span>
+          <span class="mobile-nav-num">03</span>
+        </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#about" class="mobile-nav-link">
+          <span>About Me</span>
+          <span class="mobile-nav-num">04</span>
+        </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="#contact" class="mobile-nav-link">
+          <span>Get in Touch</span>
+          <span class="mobile-nav-num">05</span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="mobile-drawer-actions">
+      <a href="CV_Ebiet Abdu Mubarok.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv" style="width:100%">
+        <span>Download CV / Resume (PDF)</span> <span>↓</span>
+      </a>
+      <a href="https://wa.me/6281358864574?text=Halo%20Ebiet,%20saya%20tertarik%20dengan%20portofolio%20Anda" target="_blank" rel="noopener noreferrer" class="btn-wa" style="width:100%">
+        <span>Chat on WhatsApp</span> <span>💬</span>
+      </a>
+      <div style="display:flex;justify-content:space-between;align-items:center;padding-top:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">
+        <span>South Tangerang, ID</span>
+        <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Behance ↗</a>
+      </div>
+    </div>
+  </div>
 
   <main id="top">
 
     <!-- Hero Section -->
-    <section style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(48px,8vw,110px) clamp(20px,5vw,72px) clamp(40px,6vw,80px)">
-      <div style="display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:flex-end">
+    <section style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(36px,7vw,110px) clamp(20px,4vw,72px) clamp(36px,5vw,80px)">
+      <div class="hero-grid" style="display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-end">
 
         <!-- Intro Text -->
         <div data-reveal style="flex:1 1 480px;min-width:0;overflow-wrap:anywhere">
-          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin:0 0 clamp(24px,3vw,38px)">Creative Designer — Content Creator — Digital Marketer</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:clamp(10px,1.2vw,11px);letter-spacing:0.24em;text-transform:uppercase;color:var(--accent);margin:0 0 clamp(18px,2.5vw,36px);line-height:1.5">Creative Designer — Content Creator — Digital Marketer</p>
           <h1 style="margin:0;font-weight:400;line-height:0.94;letter-spacing:-0.02em">
-            <span style="display:block;font-size:clamp(36px,5.6vw,92px);text-transform:uppercase;font-weight:500;letter-spacing:-0.035em">Brand systems,</span>
-            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(40px,6.2vw,104px);color:var(--text-primary);letter-spacing:-0.01em;margin:0.02em 0">stories</span>
-            <span style="display:block;font-size:clamp(36px,5.6vw,92px);text-transform:uppercase;font-weight:500;letter-spacing:-0.035em">&amp; campaigns.</span>
+            <span class="hero-title-main" style="display:block;font-size:clamp(36px,5.6vw,92px);text-transform:uppercase;font-weight:500;letter-spacing:-0.035em">Brand systems,</span>
+            <span class="hero-title-italic" style="display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:clamp(40px,6.2vw,104px);color:var(--text-primary);letter-spacing:-0.01em;margin:0.02em 0">stories</span>
+            <span class="hero-title-main" style="display:block;font-size:clamp(36px,5.6vw,92px);text-transform:uppercase;font-weight:500;letter-spacing:-0.035em">&amp; campaigns.</span>
           </h1>
-          <p style="max-width:52ch;margin:clamp(28px,3.5vw,44px) 0 0;font-size:clamp(15px,1.2vw,17px);line-height:1.68;color:var(--text-secondary)">A senior creative lead and digital marketing professional with over ten years across media, digital agencies and IT firms. I take brands end to end — identity, content, campaign — and make them hold together everywhere they appear.</p>
+          <p style="max-width:52ch;margin:clamp(20px,3vw,44px) 0 0;font-size:clamp(14.5px,1.2vw,17px);line-height:1.68;color:var(--text-secondary)">A senior creative lead and digital marketing professional with over ten years across media, digital agencies and IT firms. I take brands end to end — identity, content, campaign — and make them hold together everywhere they appear.</p>
           
-          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,3.5vw,40px)">
+          <div class="hero-cta-group" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(24px,3vw,40px)">
             <a href="#work" class="btn-primary">Selected work <span>→</span></a>
             <a href="CV_Ebiet Abdu Mubarok.pdf" target="_blank" rel="noopener noreferrer" class="btn-cv">Download CV <span>↓</span></a>
             <a href="#contact" class="btn-secondary">Get in touch</a>
@@ -298,11 +747,11 @@
         </div>
 
         <!-- Portrait Card -->
-        <div data-reveal style="flex:1 1 280px;min-width:0;max-width:460px;position:relative">
-          <div style="position:relative;overflow:hidden;border:1px solid var(--border-subtle);background:var(--bg-surface);aspect-ratio:3/4;max-height:78vh">
-            <img src="assets/portrait.png" alt="Portrait of Ebiet Abdu Mubarok" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:50% 45%;filter:var(--portrait-filter);transition:transform 1.2s cubic-bezier(.16,1,.3,1),filter .8s ease" onmouseover="this.style.transform='scale(1.04)';this.style.filter='none'" onmouseout="this.style.transform='none';this.style.filter='var(--portrait-filter)'">
-            <div style="position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(12,12,13,0.94),rgba(12,12,13,0));pointer-events:none"></div>
-            <div style="position:absolute;left:20px;right:20px;bottom:18px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;pointer-events:none">
+        <div data-reveal style="flex:1 1 280px;min-width:0;max-width:460px;width:100%;position:relative;margin:0 auto">
+          <div style="position:relative;overflow:hidden;border:1px solid var(--border-subtle);background:var(--bg-surface);aspect-ratio:3/4;max-height:74vh;border-radius:4px">
+            <img src="assets/portrait.png" alt="Portrait of Ebiet Abdu Mubarok" loading="eager" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:50% 35%;filter:var(--portrait-filter);transition:transform 1.2s cubic-bezier(.16,1,.3,1),filter .8s ease" onmouseover="this.style.transform='scale(1.04)';this.style.filter='none'" onmouseout="this.style.transform='none';this.style.filter='var(--portrait-filter)'">
+            <div style="position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(12,12,13,0.95),rgba(12,12,13,0));pointer-events:none"></div>
+            <div style="position:absolute;left:18px;right:18px;bottom:16px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;pointer-events:none">
               <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#B7B3AC">South Tangerang, ID</span>
               <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#B7B3AC">Est. 2016</span>
             </div>
@@ -312,58 +761,58 @@
       </div>
 
       <!-- Highlights / Stats -->
-      <div data-reveal style="margin-top:clamp(48px,6vw,88px);border-top:1px solid var(--border-subtle);padding-top:clamp(28px,3.5vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(24px,3vw,40px)">
-        <div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:var(--text-primary)">10+</div>
-          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Years of experience</div>
+      <div data-reveal class="stats-grid-container" style="margin-top:clamp(40px,5vw,88px);border-top:1px solid var(--border-subtle);padding-top:clamp(24px,3vw,44px);display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:clamp(20px,3vw,40px)">
+        <div style="background:rgba(237,234,228,0.015);padding:14px 16px;border-radius:4px;border:1px solid var(--border-subtle)">
+          <div class="stat-num-value" style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(36px,4.4vw,58px);line-height:1;color:var(--text-primary)">10+</div>
+          <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);line-height:1.4">Years of experience</div>
         </div>
-        <div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:var(--text-primary)">2M</div>
-          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">TikTok followers grown</div>
+        <div style="background:rgba(237,234,228,0.015);padding:14px 16px;border-radius:4px;border:1px solid var(--border-subtle)">
+          <div class="stat-num-value" style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(36px,4.4vw,58px);line-height:1;color:var(--text-primary)">2M</div>
+          <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);line-height:1.4">TikTok followers</div>
         </div>
-        <div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:var(--text-primary)">16K</div>
-          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Instagram audience built</div>
+        <div style="background:rgba(237,234,228,0.015);padding:14px 16px;border-radius:4px;border:1px solid var(--border-subtle)">
+          <div class="stat-num-value" style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(36px,4.4vw,58px);line-height:1;color:var(--text-primary)">16K</div>
+          <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);line-height:1.4">Instagram reach</div>
         </div>
-        <div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(38px,4.4vw,58px);line-height:1;color:var(--text-primary)">+25%</div>
-          <div style="margin-top:10px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Engagement lift, Terra Systems</div>
+        <div style="background:rgba(237,234,228,0.015);padding:14px 16px;border-radius:4px;border:1px solid var(--border-subtle)">
+          <div class="stat-num-value" style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(36px,4.4vw,58px);line-height:1;color:var(--text-primary)">+25%</div>
+          <div style="margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);line-height:1.4">Engagement lift</div>
         </div>
       </div>
     </section>
 
     <!-- Infinite Marquee Ticker -->
-    <div style="border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);overflow:hidden;padding:16px 0;background:rgba(237,234,228,0.015)">
-      <div style="display:flex;width:max-content;animation:marquee 40s linear infinite;will-change:transform">
-        <div style="display:flex;gap:44px;padding-right:44px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap">
+    <div style="border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);overflow:hidden;padding:14px 0;background:rgba(237,234,228,0.015)">
+      <div style="display:flex;width:max-content;animation:marquee 36s linear infinite;will-change:transform">
+        <div style="display:flex;gap:36px;padding-right:36px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap">
           <span>Corporate identity</span><span style="color:var(--accent)">✦</span><span>Rebranding</span><span style="color:var(--accent)">✦</span><span>Social &amp; UI design</span><span style="color:var(--accent)">✦</span><span>Campaign collateral</span><span style="color:var(--accent)">✦</span><span>Photography</span><span style="color:var(--accent)">✦</span><span>Video editing</span><span style="color:var(--accent)">✦</span><span>Event production</span><span style="color:var(--accent)">✦</span>
         </div>
-        <div aria-hidden="true" style="display:flex;gap:44px;padding-right:44px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap">
+        <div aria-hidden="true" style="display:flex;gap:36px;padding-right:36px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap">
           <span>Corporate identity</span><span style="color:var(--accent)">✦</span><span>Rebranding</span><span style="color:var(--accent)">✦</span><span>Social &amp; UI design</span><span style="color:var(--accent)">✦</span><span>Campaign collateral</span><span style="color:var(--accent)">✦</span><span>Photography</span><span style="color:var(--accent)">✦</span><span>Video editing</span><span style="color:var(--accent)">✦</span><span>Event production</span><span style="color:var(--accent)">✦</span>
         </div>
       </div>
     </div>
 
     <!-- Selected Work Section -->
-    <section id="work" style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px)">
-      <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--border-subtle);padding-bottom:22px">
-        <h2 style="margin:0;font-size:clamp(30px,4.6vw,62px);font-weight:500;letter-spacing:-0.03em;text-transform:uppercase">Selected work</h2>
-        <p style="margin:0;max-width:40ch;font-size:13px;line-height:1.6;color:var(--text-muted)">Four bodies of work that define how I operate: identity first, content at scale, and production that actually ships.</p>
+    <section id="work" style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(48px,8vw,140px) clamp(20px,4vw,72px)">
+      <div data-reveal class="section-header">
+        <h2 class="section-title">Selected work</h2>
+        <p style="margin:0;max-width:44ch;font-size:13.5px;line-height:1.6;color:var(--text-muted)">Four bodies of work that define how I operate: identity first, content at scale, and production that actually ships.</p>
       </div>
 
       <!-- Case Study 1: Terra Systems -->
-      <article data-reveal style="margin-top:clamp(36px,4.5vw,64px)">
+      <article data-reveal style="margin-top:clamp(32px,4vw,64px)">
         <button type="button" class="case-study-toggle work-card-btn" data-target="details-1" aria-expanded="false">
-          <div class="work-card-media" style="aspect-ratio:21/9;min-height:240px">
+          <div class="work-card-media" style="aspect-ratio:21/9;min-height:220px">
             <img src="assets/project-terra.jpg" alt="Terra Systems B2B Cybersecurity Brand System Mockup" loading="lazy" decoding="async">
-            <span style="position:absolute;left:22px;top:20px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.78);padding:4px 8px;border:1px solid var(--border-subtle)">Case Study 01</span>
+            <span style="position:absolute;left:16px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.85);backdrop-filter:blur(8px);padding:4px 10px;border:1px solid var(--border-subtle);border-radius:2px">Case Study 01</span>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;align-items:start;padding-top:22px">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;align-items:start;padding-top:20px">
             <div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Brand identity — Terra Systems, Pte Ltd</div>
-              <h3 style="margin:12px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.6vw,48px);font-weight:400;letter-spacing:-0.01em;line-height:1.05">B2B Cybersecurity Brand System</h3>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Brand identity — Terra Systems, Pte Ltd</div>
+              <h3 style="margin:10px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,3.6vw,48px);font-weight:400;letter-spacing:-0.01em;line-height:1.08">B2B Cybersecurity Brand System</h3>
             </div>
-            <div style="display:flex;justify-content:space-between;gap:20px;align-items:flex-start">
+            <div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start">
               <p style="margin:0;max-width:46ch;font-size:14px;line-height:1.7;color:var(--text-secondary)">Company-wide branding and rebranding for a Singapore cybersecurity and IT solutions firm, carried across international markets, expo environments and distributor channels.</p>
               <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted);white-space:nowrap">2023 — 2026</span>
             </div>
@@ -373,70 +822,70 @@
           </div>
         </button>
 
-        <div id="details-1" class="case-study-details" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3vw,48px)">
-          <div>
-            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Overview</div>
-            <dl style="margin:16px 0 0;display:grid;gap:12px;font-size:14px">
-              <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(237,234,228,0.07);padding-bottom:10px">
-                <dt style="color:var(--text-muted)">Client</dt>
-                <dd style="margin:0;color:var(--text-primary);text-align:right">Terra Systems, Pte Ltd — Singapore</dd>
+        <div id="details-1" class="case-study-details" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,48px)">
+          <div style="background:rgba(237,234,228,0.02);padding:20px;border-radius:4px;border:1px solid var(--border-subtle)">
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Overview</div>
+            <dl style="margin:14px 0 0;display:grid;gap:14px;font-size:13.5px">
+              <div>
+                <dt style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted)">Client</dt>
+                <dd style="margin:4px 0 0;color:var(--text-primary)">Terra Systems, Pte Ltd — Singapore</dd>
               </div>
-              <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(237,234,228,0.07);padding-bottom:10px">
-                <dt style="color:var(--text-muted)">Role</dt>
-                <dd style="margin:0;color:var(--text-primary);text-align:right">Creative Designer</dd>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:12px">
+                <dt style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted)">Role</dt>
+                <dd style="margin:4px 0 0;color:var(--text-primary)">Creative Designer</dd>
               </div>
-              <div style="display:flex;justify-content:space-between;gap:16px">
-                <dt style="color:var(--text-muted)">Deliverables</dt>
-                <dd style="margin:0;color:var(--text-primary);text-align:right">Identity, marketing collateral, UI elements, social content, expo booths</dd>
+              <div style="border-top:1px solid var(--border-subtle);padding-top:12px">
+                <dt style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted)">Deliverables</dt>
+                <dd style="margin:4px 0 0;color:var(--text-primary)">Identity, marketing collateral, UI elements, social content, expo booths</dd>
               </div>
             </dl>
           </div>
-          <div style="display:grid;gap:22px">
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Challenge</div>
-              <p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">A technical B2B offer needed a market position clear enough to travel across international markets and channel partners.</p>
+          <div style="display:grid;gap:18px">
+            <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Challenge</div>
+              <p style="margin:8px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">A technical B2B offer needed a market position clear enough to travel across international markets and channel partners.</p>
             </div>
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Approach</div>
-              <p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Led branding and rebranding company-wide, then extended it into multi-channel marketing collateral, UI elements and social content rather than a static logo package.</p>
+            <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Approach</div>
+              <p style="margin:8px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Led branding and rebranding company-wide, then extended it into multi-channel marketing collateral, UI elements and social content rather than a static logo package.</p>
             </div>
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Outcome</div>
-              <p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">A 25% increase in audience engagement, plus aligned global campaign standards across distributor promotional assets.</p>
+            <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Outcome</div>
+              <p style="margin:8px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">A 25% increase in audience engagement, plus aligned global campaign standards across distributor promotional assets.</p>
             </div>
           </div>
         </div>
       </article>
 
       <!-- Grid Case Studies (2 & 3) -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,3.5vw,56px);margin-top:clamp(48px,6vw,96px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3.5vw,56px);margin-top:clamp(40px,5vw,88px)">
 
         <!-- Case Study 2: Amartha Rebrand -->
         <article data-reveal>
           <button type="button" class="case-study-toggle work-card-btn" data-target="details-2" aria-expanded="false">
             <div class="work-card-media" style="aspect-ratio:4/3">
               <img src="assets/project-amartha.jpg" alt="Amartha Corp Rebrand & Guidelines Showcase" loading="lazy" decoding="async">
-              <span style="position:absolute;left:18px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.78);padding:4px 8px;border:1px solid var(--border-subtle)">Case Study 02</span>
+              <span style="position:absolute;left:16px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.85);backdrop-filter:blur(8px);padding:4px 10px;border:1px solid var(--border-subtle);border-radius:2px">Case Study 02</span>
             </div>
-            <div style="padding-top:20px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Corporate rebranding — Amartha Corp</div>
-              <h3 style="margin:10px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.1">Brand Standardization Across Subsidiaries</h3>
-              <p style="margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--text-secondary)">Redesigned the corporate identity and standardized visual assets across marketing channels for the parent company and its subsidiaries.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+            <div style="padding-top:18px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Corporate rebranding — Amartha Corp</div>
+              <h3 style="margin:8px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">Brand Standardization Across Subsidiaries</h3>
+              <p style="margin:10px 0 0;font-size:14px;line-height:1.7;color:var(--text-secondary)">Redesigned the corporate identity and standardized visual assets across marketing channels for the parent company and its subsidiaries.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
                 <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">Surabaya &bull; 2022</span>
                 <span class="accordion-indicator"><span>Details</span><span class="accordion-arrow">→</span></span>
               </div>
             </div>
           </button>
 
-          <div id="details-2" class="case-study-details" style="grid-template-columns:1fr;gap:18px">
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Role</div>
-              <p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Creatives Lead — owned the corporate rebranding process and overall visual strategy across marketing materials.</p>
+          <div id="details-2" class="case-study-details" style="grid-template-columns:1fr;gap:14px">
+            <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Role</div>
+              <p style="margin:6px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Creatives Lead — owned the corporate rebranding process and overall visual strategy across marketing materials.</p>
             </div>
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Approach</div>
-              <p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Set one visual system for parent and subsidiaries, then held it in place with team KPIs aligned to executive directives and supervised daily project workflows.</p>
+            <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Approach</div>
+              <p style="margin:6px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Set one visual system for parent and subsidiaries, then held it in place with team KPIs aligned to executive directives and supervised daily project workflows.</p>
             </div>
           </div>
         </article>
@@ -446,27 +895,27 @@
           <button type="button" class="case-study-toggle work-card-btn" data-target="details-3" aria-expanded="false">
             <div class="work-card-media" style="aspect-ratio:4/3">
               <img src="assets/project-kol.jpg" alt="End-to-End Influencer & KOL Campaign Showcase" loading="lazy" decoding="async">
-              <span style="position:absolute;left:18px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.78);padding:4px 8px;border:1px solid var(--border-subtle)">Case Study 03</span>
+              <span style="position:absolute;left:16px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.85);backdrop-filter:blur(8px);padding:4px 10px;border:1px solid var(--border-subtle);border-radius:2px">Case Study 03</span>
             </div>
-            <div style="padding-top:20px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Campaign — Influencer marketing</div>
-              <h3 style="margin:10px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.1">End-to-End KOL Campaigns</h3>
-              <p style="margin:12px 0 0;font-size:14px;line-height:1.7;color:var(--text-secondary)">KOL acquisition, contract negotiation and campaign execution to expand brand reach and lift social media engagement.</p>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+            <div style="padding-top:18px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Campaign — Influencer marketing</div>
+              <h3 style="margin:8px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">End-to-End KOL Campaigns</h3>
+              <p style="margin:10px 0 0;font-size:14px;line-height:1.7;color:var(--text-secondary)">KOL acquisition, contract negotiation and campaign execution to expand brand reach and lift social media engagement.</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
                 <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-muted)">Amartha Corp &bull; 2022</span>
                 <span class="accordion-indicator"><span>Details</span><span class="accordion-arrow">→</span></span>
               </div>
             </div>
           </button>
 
-          <div id="details-3" class="case-study-details" style="grid-template-columns:1fr;gap:18px">
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Scope</div>
-              <p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Sourced, negotiated with and managed KOLs and influencers to expand brand exposure across digital platforms.</p>
+          <div id="details-3" class="case-study-details" style="grid-template-columns:1fr;gap:14px">
+            <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Scope</div>
+              <p style="margin:6px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Sourced, negotiated with and managed KOLs and influencers to expand brand exposure across digital platforms.</p>
             </div>
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Output</div>
-              <p style="margin:8px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Video ads and creative visual content produced and directed for multichannel digital marketing.</p>
+            <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Output</div>
+              <p style="margin:6px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Video ads and creative visual content produced and directed for multichannel digital marketing.</p>
             </div>
           </div>
         </article>
@@ -474,105 +923,105 @@
       </div>
 
       <!-- Case Study 4: Jawa Pos Radar Bojonegoro -->
-      <article data-reveal style="margin-top:clamp(48px,6vw,96px)">
+      <article data-reveal style="margin-top:clamp(40px,5vw,88px)">
         <button type="button" class="case-study-toggle work-card-btn" data-target="details-4" aria-expanded="false">
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,3vw,48px);align-items:center">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,48px);align-items:center">
             <div>
-              <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Digital content — Jawa Pos Radar Bojonegoro</div>
-              <h3 style="margin:14px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,3.4vw,46px);font-weight:400;line-height:1.05">Growing a Regional Newsroom to 2M</h3>
-              <p style="margin:16px 0 0;max-width:48ch;font-size:15px;line-height:1.7;color:var(--text-secondary)">Six years of daily editorial layout, social visual assets and content strategy across print and online — Instagram to 16K, TikTok to 2M.</p>
-              <div style="display:flex;align-items:center;padding-top:20px">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Digital content — Jawa Pos Radar Bojonegoro</div>
+              <h3 style="margin:10px 0 0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(26px,3.4vw,46px);font-weight:400;line-height:1.08">Growing a Regional Newsroom to 2M</h3>
+              <p style="margin:14px 0 0;max-width:48ch;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Six years of daily editorial layout, social visual assets and content strategy across print and online — Instagram to 16K, TikTok to 2M.</p>
+              <div style="display:flex;align-items:center;padding-top:16px">
                 <span class="accordion-indicator"><span>Read case study</span><span class="accordion-arrow">→</span></span>
               </div>
             </div>
             <div class="work-card-media" style="aspect-ratio:4/3">
               <img src="assets/project-jawapos.jpg" alt="Jawa Pos Editorial and Social Media Layouts" loading="lazy" decoding="async">
-              <span style="position:absolute;left:18px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.78);padding:4px 8px;border:1px solid var(--border-subtle)">Case Study 04</span>
+              <span style="position:absolute;left:16px;top:16px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);background:rgba(12,12,13,0.85);backdrop-filter:blur(8px);padding:4px 10px;border:1px solid var(--border-subtle);border-radius:2px">Case Study 04</span>
             </div>
           </div>
         </button>
 
-        <div id="details-4" class="case-study-details" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(24px,3vw,48px)">
-          <div>
-            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Role</div>
-            <p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Digital &amp; Creative Lead, formerly Graphic Designer. June 2016 — January 2022.</p>
+        <div id="details-4" class="case-study-details" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(20px,3vw,48px)">
+          <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Role</div>
+            <p style="margin:8px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Digital &amp; Creative Lead, formerly Graphic Designer. June 2016 — January 2022.</p>
           </div>
-          <div>
-            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Approach</div>
-            <p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Ran digital marketing and content strategy across online and print, designed daily newspaper layouts with journalists, and built social visual assets and event collateral with sales and internal divisions.</p>
+          <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Approach</div>
+            <p style="margin:8px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Ran digital marketing and content strategy across online and print, designed daily newspaper layouts with journalists, and built social visual assets and event collateral with sales and internal divisions.</p>
           </div>
-          <div>
-            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Outcome</div>
-            <p style="margin:10px 0 0;font-size:15px;line-height:1.7;color:var(--text-secondary)">Organic reach grown to 16K on Instagram and 2M on TikTok, alongside representing the company in stakeholder meetings and partnership pitches.</p>
+          <div style="background:rgba(237,234,228,0.02);padding:18px;border-radius:4px;border:1px solid var(--border-subtle)">
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Outcome</div>
+            <p style="margin:8px 0 0;font-size:14.5px;line-height:1.7;color:var(--text-secondary)">Organic reach grown to 16K on Instagram and 2M on TikTok, alongside representing the company in stakeholder meetings and partnership pitches.</p>
           </div>
         </div>
       </article>
 
-      <p data-reveal style="margin:clamp(40px,5vw,72px) 0 0;font-size:14px;color:var(--text-muted);line-height:1.7">
+      <p data-reveal style="margin:clamp(36px,5vw,72px) 0 0;font-size:14px;color:var(--text-muted);line-height:1.7">
         Full project imagery lives on Behance — <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" style="border-bottom:1px solid rgba(200,169,106,0.4)">behance.net/ebietmubharak</a>
       </p>
     </section>
 
     <!-- Capabilities Section -->
     <section id="capabilities" style="border-top:1px solid var(--border-subtle);background:#0A0A0B">
-      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,130px) clamp(20px,5vw,72px)">
-        <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
-          <h2 style="margin:0;font-size:clamp(30px,4.6vw,62px);font-weight:500;letter-spacing:-0.03em;text-transform:uppercase">Capabilities</h2>
-          <p style="margin:0;max-width:38ch;font-size:13px;line-height:1.6;color:var(--text-muted)">What I am hired for, and what I hand over.</p>
+      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(48px,8vw,130px) clamp(20px,4vw,72px)">
+        <div data-reveal class="section-header">
+          <h2 class="section-title">Capabilities</h2>
+          <p style="margin:0;max-width:40ch;font-size:13.5px;line-height:1.6;color:var(--text-muted)">What I am hired for, and what I hand over.</p>
         </div>
         
-        <div data-reveal style="margin-top:clamp(36px,4.5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle)">
-          <div style="background:#0A0A0B;padding:clamp(24px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
+        <div data-reveal style="margin-top:clamp(32px,4vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle)">
+          <div style="background:#0A0A0B;padding:clamp(22px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--text-muted)">01</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">01</span>
               <span style="width:7px;height:7px;background:var(--accent);display:inline-block"></span>
             </div>
-            <h3 style="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Brand Identity</h3>
+            <h3 style="margin:clamp(22px,3vw,40px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Brand Identity</h3>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--text-muted)">Corporate identity and rebranding, from core system to the rules that keep it consistent across subsidiaries and channels.</p>
           </div>
 
-          <div style="background:#0A0A0B;padding:clamp(24px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
+          <div style="background:#0A0A0B;padding:clamp(22px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--text-muted)">02</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">02</span>
               <span style="width:7px;height:7px;background:var(--accent);display:inline-block"></span>
             </div>
-            <h3 style="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Social &amp; UI Design</h3>
+            <h3 style="margin:clamp(22px,3vw,40px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Social &amp; UI Design</h3>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--text-muted)">Social media creatives, website and UI layouts built for a content calendar, not a one-off launch.</p>
           </div>
 
-          <div style="background:#0A0A0B;padding:clamp(24px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
+          <div style="background:#0A0A0B;padding:clamp(22px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--text-muted)">03</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">03</span>
               <span style="width:7px;height:7px;background:var(--accent);display:inline-block"></span>
             </div>
-            <h3 style="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Campaign Design</h3>
+            <h3 style="margin:clamp(22px,3vw,40px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Campaign Design</h3>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--text-muted)">Multi-channel collateral, pitch decks and sales enablement material aligned with brand managers.</p>
           </div>
 
-          <div style="background:#0A0A0B;padding:clamp(24px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
+          <div style="background:#0A0A0B;padding:clamp(22px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--text-muted)">04</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">04</span>
               <span style="width:7px;height:7px;background:var(--accent);display:inline-block"></span>
             </div>
-            <h3 style="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Content Strategy</h3>
+            <h3 style="margin:clamp(22px,3vw,40px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Content Strategy</h3>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--text-muted)">Audience engagement, copywriting and analytics-led planning across organic and paid channels.</p>
           </div>
 
-          <div style="background:#0A0A0B;padding:clamp(24px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
+          <div style="background:#0A0A0B;padding:clamp(22px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--text-muted)">05</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">05</span>
               <span style="width:7px;height:7px;background:var(--accent);display:inline-block"></span>
             </div>
-            <h3 style="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Photography &amp; Video</h3>
+            <h3 style="margin:clamp(22px,3vw,40px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Photography &amp; Video</h3>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--text-muted)">Commercial photography, end-to-end video editing and directed ad production for digital campaigns.</p>
           </div>
 
-          <div style="background:#0A0A0B;padding:clamp(24px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
+          <div style="background:#0A0A0B;padding:clamp(22px,2.6vw,36px);transition:background .35s ease" onmouseover="this.style.background='#111113'" onmouseout="this.style.background='#0A0A0B'">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:16px">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:var(--text-muted)">06</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent)">06</span>
               <span style="width:7px;height:7px;background:var(--accent);display:inline-block"></span>
             </div>
-            <h3 style="margin:clamp(28px,3vw,44px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Event Production</h3>
+            <h3 style="margin:clamp(22px,3vw,40px) 0 0;font-size:clamp(19px,1.6vw,23px);font-weight:500;letter-spacing:-0.01em">Event Production</h3>
             <p style="margin:10px 0 0;font-size:14px;line-height:1.65;color:var(--text-muted)">Floor and stage coordination, rundown execution, technical setup, vendor and talent handling.</p>
           </div>
         </div>
@@ -580,117 +1029,117 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px)">
-      <div data-reveal style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--border-subtle);padding-bottom:22px">
-        <h2 style="margin:0;font-size:clamp(30px,4.6vw,62px);font-weight:500;letter-spacing:-0.03em;text-transform:uppercase">Experience</h2>
-        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted)">2016 — Present</p>
+    <section id="experience" style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(48px,8vw,140px) clamp(20px,4vw,72px)">
+      <div data-reveal class="section-header">
+        <h2 class="section-title">Experience</h2>
+        <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent)">2016 — Present</p>
       </div>
 
       <!-- Experience Item 1 -->
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
-        <div style="display:flex;align-items:flex-start;gap:14px">
+      <div data-reveal class="experience-item" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(24px,3vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:flex-start;gap:12px">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex:none"></span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B7B3AC">May 2026 — Present</span>
         </div>
         <div>
           <h3 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">Freelance Event Organizer</h3>
-          <div style="margin-top:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Floor Director</div>
-          <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">Jakarta</div>
+          <div style="margin-top:6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:500">Floor Director</div>
+          <div style="margin-top:4px;font-size:12px;color:var(--text-muted)">Jakarta</div>
         </div>
-        <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:52ch">End-to-end event operations and backstage execution for national events of 1,500+ attendees, including rundown timing, stage production, talent logistics, and live technical setups for awarding events and organizational congresses.</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--text-secondary);max-width:52ch">End-to-end event operations and backstage execution for national events of 1,500+ attendees, including rundown timing, stage production, talent logistics, and live technical setups for awarding events and organizational congresses.</p>
       </div>
 
       <!-- Experience Item 2 -->
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
-        <div style="display:flex;align-items:flex-start;gap:14px">
+      <div data-reveal class="experience-item" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(24px,3vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:flex-start;gap:12px">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex:none"></span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B7B3AC">May 2023 — May 2026</span>
         </div>
         <div>
           <h3 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">Terra Systems, Pte Ltd</h3>
-          <div style="margin-top:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Creative Designer</div>
-          <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">Singapore</div>
+          <div style="margin-top:6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:500">Creative Designer</div>
+          <div style="margin-top:4px;font-size:12px;color:var(--text-muted)">Singapore</div>
         </div>
-        <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Led company-wide branding for B2B cybersecurity and IT solutions across international markets, producing marketing collateral, UI elements, social content, expo booth concepts and distributor assets.</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Led company-wide branding for B2B cybersecurity and IT solutions across international markets, producing marketing collateral, UI elements, social content, expo booth concepts and distributor assets.</p>
       </div>
 
       <!-- Experience Item 3 -->
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
-        <div style="display:flex;align-items:flex-start;gap:14px">
+      <div data-reveal class="experience-item" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(24px,3vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:flex-start;gap:12px">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex:none"></span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B7B3AC">Aug 2022 — May 2023</span>
         </div>
         <div>
           <h3 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">Sinar Media Digitama</h3>
-          <div style="margin-top:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Creatives Lead</div>
-          <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">South Tangerang</div>
+          <div style="margin-top:6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:500">Creatives Lead</div>
+          <div style="margin-top:4px;font-size:12px;color:var(--text-muted)">South Tangerang</div>
         </div>
-        <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Built consistent brand identities and produced marketing assets, pitch decks and sales enablement material with brand managers, plus end-to-end multimedia: social creatives, UI layouts, booth designs, video and commercial photography.</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Built consistent brand identities and produced marketing assets, pitch decks and sales enablement material with brand managers, plus end-to-end multimedia: social creatives, UI layouts, booth designs, video and commercial photography.</p>
       </div>
 
       <!-- Experience Item 4 -->
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
-        <div style="display:flex;align-items:flex-start;gap:14px">
+      <div data-reveal class="experience-item" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(24px,3vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:flex-start;gap:12px">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex:none"></span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B7B3AC">Jan 2022 — Aug 2022</span>
         </div>
         <div>
           <h3 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">Amartha Corp</h3>
-          <div style="margin-top:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Creatives Lead</div>
-          <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">Surabaya</div>
+          <div style="margin-top:6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:500">Creatives Lead</div>
+          <div style="margin-top:4px;font-size:12px;color:var(--text-muted)">Surabaya</div>
         </div>
-        <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Managed corporate rebranding and visual strategy for the parent company and its subsidiaries, sourced and negotiated with KOLs, directed video ads, and set team KPIs against executive directives.</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Managed corporate rebranding and visual strategy for the parent company and its subsidiaries, sourced and negotiated with KOLs, directed video ads, and set team KPIs against executive directives.</p>
       </div>
 
       <!-- Experience Item 5 -->
-      <div data-reveal style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(28px,3.5vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
-        <div style="display:flex;align-items:flex-start;gap:14px">
+      <div data-reveal class="experience-item" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(16px,3vw,48px);padding:clamp(24px,3vw,44px) 0;border-bottom:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:flex-start;gap:12px">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;flex:none"></span>
           <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#B7B3AC">Jun 2016 — Jan 2022</span>
         </div>
         <div>
           <h3 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(24px,2.6vw,34px);font-weight:400;line-height:1.15">Jawa Pos Radar Bojonegoro</h3>
-          <div style="margin-top:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent)">Digital &amp; Creative Lead (formerly Graphic Designer)</div>
-          <div style="margin-top:6px;font-size:12px;color:var(--text-muted)">Bojonegoro</div>
+          <div style="margin-top:6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);font-weight:500">Digital &amp; Creative Lead (formerly Graphic Designer)</div>
+          <div style="margin-top:4px;font-size:12px;color:var(--text-muted)">Bojonegoro</div>
         </div>
-        <p style="margin:0;font-size:15px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Grew organic reach to 16K on Instagram and 2M on TikTok, ran digital marketing and content strategy across online and print, designed daily newspaper layouts with journalists, and pitched strategic partnerships.</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.7;color:var(--text-secondary);max-width:52ch">Grew organic reach to 16K on Instagram and 2M on TikTok, ran digital marketing and content strategy across online and print, designed daily newspaper layouts with journalists, and pitched strategic partnerships.</p>
       </div>
     </section>
 
     <!-- About Section -->
     <section id="about" style="border-top:1px solid var(--border-subtle);background:#0A0A0B">
-      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(64px,9vw,140px) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,88px)">
+      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(48px,8vw,140px) clamp(20px,4vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,88px)">
         <div data-reveal>
-          <p style="margin:0 0 28px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent)">About</p>
-          <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(30px,3.8vw,54px);line-height:1.15;letter-spacing:-0.01em">I started in a newsroom, laying out pages on deadline. That habit never left.</h2>
+          <p style="margin:0 0 20px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--accent)">About</p>
+          <h2 style="margin:0;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(28px,3.8vw,54px);line-height:1.15;letter-spacing:-0.01em">I started in a newsroom, laying out pages on deadline. That habit never left.</h2>
         </div>
-        <div data-reveal style="display:grid;gap:22px;align-content:start">
-          <p style="margin:0;font-size:16px;line-height:1.75;color:var(--text-secondary)">Ten years on, the work spans media, digital agencies and IT firms — but the method is the same. Understand the business, build the system, then produce everything the system needs: identity, campaign collateral, social content, UI, photography, video.</p>
-          <p style="margin:0;font-size:16px;line-height:1.75;color:var(--text-secondary)">I have run end-to-end company rebrands, led creative teams against executive KPIs, negotiated with influencers, and directed live stage production for events of 1,500+ people. Strategy and execution are not separate jobs to me.</p>
+        <div data-reveal style="display:grid;gap:20px;align-content:start">
+          <p style="margin:0;font-size:15.5px;line-height:1.75;color:var(--text-secondary)">Ten years on, the work spans media, digital agencies and IT firms — but the method is the same. Understand the business, build the system, then produce everything the system needs: identity, campaign collateral, social content, UI, photography, video.</p>
+          <p style="margin:0;font-size:15.5px;line-height:1.75;color:var(--text-secondary)">I have run end-to-end company rebrands, led creative teams against executive KPIs, negotiated with influencers, and directed live stage production for events of 1,500+ people. Strategy and execution are not separate jobs to me.</p>
           
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:14px;border-top:1px solid var(--border-subtle);padding-top:26px">
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Education</div>
-              <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--text-primary)">Bachelor's Degree in Management<br><span style="color:var(--text-muted)">STIE Cendekia Bojonegoro</span></p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-top:10px;border-top:1px solid var(--border-subtle);padding-top:22px">
+            <div style="background:rgba(237,234,228,0.02);padding:14px 16px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Education</div>
+              <p style="margin:8px 0 0;font-size:14px;line-height:1.6;color:var(--text-primary)">Bachelor's Degree in Management<br><span style="color:var(--text-muted)">STIE Cendekia Bojonegoro</span></p>
             </div>
-            <div>
-              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Languages</div>
-              <p style="margin:10px 0 0;font-size:14px;line-height:1.6;color:var(--text-primary)">Indonesian — native<br><span style="color:var(--text-muted)">English — professional</span></p>
+            <div style="background:rgba(237,234,228,0.02);padding:14px 16px;border-radius:4px;border:1px solid var(--border-subtle)">
+              <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);font-weight:600">Languages</div>
+              <p style="margin:8px 0 0;font-size:14px;line-height:1.6;color:var(--text-primary)">Indonesian — native<br><span style="color:var(--text-muted)">English — professional</span></p>
             </div>
           </div>
           
-          <div style="border-top:1px solid var(--border-subtle);padding-top:26px">
+          <div style="border-top:1px solid var(--border-subtle);padding-top:22px">
             <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Toolkit</div>
-            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">Photoshop</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">Illustrator</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">InDesign</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">After Effects</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">Figma</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">Canva</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">CorelDRAW</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">CapCut</span>
-              <span style="border:1px solid var(--border-medium);padding:7px 13px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC">Magnific</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">Photoshop</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">Illustrator</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">InDesign</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">After Effects</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">Figma</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">Canva</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">CorelDRAW</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">CapCut</span>
+              <span style="border:1px solid var(--border-medium);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#B7B3AC;border-radius:2px">Magnific</span>
             </div>
           </div>
         </div>
@@ -699,50 +1148,61 @@
 
     <!-- Contact Section -->
     <section id="contact" style="border-top:1px solid var(--border-subtle)">
-      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(72px,10vw,160px) clamp(20px,5vw,72px)">
+      <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(54px,9vw,160px) clamp(20px,4vw,72px)">
         <div data-reveal>
           <h2 style="margin:0;font-weight:500;line-height:0.98;letter-spacing:-0.035em">
-            <span style="display:block;font-size:clamp(36px,7vw,100px);text-transform:uppercase">Let's make something</span>
-            <span style="display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(40px,7.6vw,110px);letter-spacing:-0.01em">worth remembering.</span>
+            <span class="contact-card-title" style="display:block;font-size:clamp(34px,7vw,100px);text-transform:uppercase">Let's make something</span>
+            <span class="contact-card-title" style="display:block;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(38px,7.6vw,110px);letter-spacing:-0.01em;color:var(--accent)">worth remembering.</span>
           </h2>
         </div>
         
-        <div data-reveal style="margin-top:clamp(40px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(24px,3vw,48px);border-top:1px solid var(--border-subtle);padding-top:clamp(28px,3.5vw,44px)">
-          <div>
+        <div data-reveal class="contact-grid" style="margin-top:clamp(36px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(20px,3vw,48px);border-top:1px solid var(--border-subtle);padding-top:clamp(24px,3.5vw,44px)">
+          <div style="background:rgba(237,234,228,0.015);padding:16px;border-radius:4px;border:1px solid var(--border-subtle)">
             <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Email</div>
-            <a href="mailto:ebietabdumubarok@gmail.com" style="display:inline-block;margin-top:12px;font-size:clamp(15px,1.4vw,18px);color:var(--text-primary);border-bottom:1px solid rgba(237,234,228,0.22)">ebietabdumubarok@gmail.com</a>
+            <a href="mailto:ebietabdumubarok@gmail.com" style="display:inline-block;margin-top:8px;font-size:clamp(14px,1.3vw,17px);color:var(--text-primary);border-bottom:1px solid rgba(237,234,228,0.22);word-break:break-all">ebietabdumubarok@gmail.com</a>
           </div>
-          <div>
-            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Phone / WhatsApp</div>
-            <a href="tel:+6281358864574" style="display:inline-block;margin-top:12px;font-size:clamp(15px,1.4vw,18px);color:var(--text-primary);border-bottom:1px solid rgba(237,234,228,0.22)">+62 813 5886 4574</a>
+          <div style="background:rgba(237,234,228,0.015);padding:16px;border-radius:4px;border:1px solid var(--border-subtle)">
+            <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">WhatsApp / Phone</div>
+            <a href="https://wa.me/6281358864574?text=Halo%20Ebiet,%20saya%20tertarik%20dengan%20portofolio%20Anda" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:8px;font-size:clamp(14px,1.3vw,17px);color:var(--text-primary);border-bottom:1px solid rgba(237,234,228,0.22)">+62 813 5886 4574 💬</a>
           </div>
-          <div>
+          <div style="background:rgba(237,234,228,0.015);padding:16px;border-radius:4px;border:1px solid var(--border-subtle)">
             <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Portfolio</div>
-            <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:12px;font-size:clamp(15px,1.4vw,18px);color:var(--text-primary);border-bottom:1px solid rgba(237,234,228,0.22)">behance.net/ebietmubharak</a>
+            <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:8px;font-size:clamp(14px,1.3vw,17px);color:var(--text-primary);border-bottom:1px solid rgba(237,234,228,0.22)">behance.net/ebietmubharak</a>
           </div>
-          <div>
+          <div style="background:rgba(237,234,228,0.015);padding:16px;border-radius:4px;border:1px solid var(--border-subtle)">
             <div style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-muted)">Based in</div>
-            <p style="margin:12px 0 0;font-size:clamp(15px,1.4vw,18px);color:var(--text-primary)">South Tangerang, Indonesia</p>
+            <p style="margin:8px 0 0;font-size:clamp(14px,1.3vw,17px);color:var(--text-primary)">South Tangerang, Indonesia</p>
           </div>
         </div>
         
-        <div data-reveal style="margin-top:clamp(36px,4vw,56px);display:flex;flex-wrap:wrap;gap:16px">
-          <a href="mailto:ebietabdumubarok@gmail.com" class="btn-primary" style="padding:18px 34px;font-size:12px">Get in touch <span>→</span></a>
-          <a href="CV_Ebiet Abdu Mubarok.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:18px 30px;font-size:12px">Download Curriculum Vitae (PDF) <span>↓</span></a>
+        <div data-reveal class="contact-actions" style="margin-top:clamp(32px,4vw,56px);display:flex;flex-wrap:wrap;gap:14px">
+          <a href="mailto:ebietabdumubarok@gmail.com" class="btn-primary" style="padding:16px 32px">Send an Email <span>→</span></a>
+          <a href="https://wa.me/6281358864574?text=Halo%20Ebiet,%20saya%20tertarik%20dengan%20portofolio%20Anda" target="_blank" rel="noopener noreferrer" class="btn-wa" style="padding:16px 28px">Chat via WhatsApp <span>💬</span></a>
+          <a href="CV_Ebiet Abdu Mubarok.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="padding:16px 28px">Download CV (PDF) <span>↓</span></a>
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- Mobile Floating Quick Connect Bar -->
+  <aside class="floating-quick-bar" id="floatingQuickBar" aria-label="Quick Actions">
+    <a href="https://wa.me/6281358864574?text=Halo%20Ebiet,%20saya%20tertarik%20dengan%20portofolio%20Anda" target="_blank" rel="noopener noreferrer" class="floating-btn floating-btn-wa">
+      <span>WhatsApp</span> <span>💬</span>
+    </a>
+    <a href="CV_Ebiet Abdu Mubarok.pdf" target="_blank" rel="noopener noreferrer" class="floating-btn floating-btn-primary">
+      <span>CV</span> <span>↓</span>
+    </a>
+  </aside>
+
   <!-- Footer -->
   <footer style="border-top:1px solid var(--border-subtle);background:var(--bg-dark)">
-    <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(28px,3vw,44px) clamp(20px,5vw,72px);display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center">
+    <div style="width:100%;max-width:1440px;margin:0 auto;padding:clamp(24px,3vw,44px) clamp(20px,4vw,72px);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center">
       <div>
-        <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-primary)">Ebiet Abdu Mubarok</div>
-        <div style="margin-top:6px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted)">Creative Designer — Content Creator — Digital Marketer</div>
+        <div style="font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-primary);font-weight:500">Ebiet Abdu Mubarok</div>
+        <div style="margin-top:4px;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted)">Creative Designer — Content Creator — Digital Marketer</div>
       </div>
-      <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;gap:20px;flex-wrap:wrap">
         <a href="https://behance.net/ebietmubharak" target="_blank" rel="noopener noreferrer" class="nav-link">Behance</a>
         <a href="mailto:ebietabdumubarok@gmail.com" class="nav-link">Email</a>
         <a href="CV_Ebiet Abdu Mubarok.pdf" target="_blank" rel="noopener noreferrer" class="nav-link">CV / Resume</a>
@@ -752,10 +1212,30 @@
     </div>
   </footer>
 
-  <!-- Interactive Accordion & Scroll Reveal Scripts -->
+  <!-- Interactivity Scripts: Accordion, Mobile Menu, Scroll Reveals, Floating Bar -->
   <script>
     (function () {
-      // 1. Accordion expansion logic
+      // 1. Mobile Hamburger Menu Toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+      function toggleMobileMenu(open) {
+        const isOpen = open !== undefined ? open : !mobileBtn.classList.contains('is-active');
+        mobileBtn.classList.toggle('is-active', isOpen);
+        mobileDrawer.classList.toggle('is-open', isOpen);
+        mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.classList.toggle('menu-open', isOpen);
+      }
+
+      if (mobileBtn && mobileDrawer) {
+        mobileBtn.addEventListener('click', () => toggleMobileMenu());
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', () => toggleMobileMenu(false));
+        });
+      }
+
+      // 2. Accordion expansion logic
       const toggles = document.querySelectorAll('.case-study-toggle');
       toggles.forEach(btn => {
         btn.addEventListener('click', function (e) {
@@ -776,7 +1256,28 @@
         });
       });
 
-      // 2. IntersectionObserver scroll reveals
+      // 3. Floating Quick Action Bar (visible on scroll down)
+      const floatingBar = document.getElementById('floatingQuickBar');
+      let lastScrollY = window.scrollY;
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        // Show after scrolling past 400px, hide near very bottom contact
+        if (currentScroll > 420) {
+          const docHeight = document.documentElement.scrollHeight;
+          const windowHeight = window.innerHeight;
+          if (currentScroll + windowHeight > docHeight - 350) {
+            floatingBar.classList.remove('is-visible');
+          } else {
+            floatingBar.classList.add('is-visible');
+          }
+        } else {
+          floatingBar.classList.remove('is-visible');
+        }
+        lastScrollY = currentScroll;
+      }, { passive: true });
+
+      // 4. IntersectionObserver scroll reveals
       if ('IntersectionObserver' in window) {
         const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (!prefersReducedMotion) {
@@ -795,11 +1296,9 @@
 
           revealElements.forEach(el => observer.observe(el));
         } else {
-          // Immediately show if reduced motion preferred
           document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'));
         }
       } else {
-        // Fallback for older browsers
         document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-revealed'));
       }
     })();

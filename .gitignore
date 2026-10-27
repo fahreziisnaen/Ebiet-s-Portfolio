@@ -1,20 +1,36 @@
-# OS and Editor files
+# Operating System & Editor Files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
 *.swp
+*.swo
 *.bak
 *~
 
-# Large archive exports / backups
+# Archives & Large Export Backups
 *.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
 
-# Design tool metadata & thumbnail artifacts
+# Design Tool Metadata, Scratch Files & Redundant Uploads
 .thumbnail
+uploads/
+data/
+admin.html
+generate-og.html
 
-# Environment / Logs / Redundant folders
+# Environment, Logs & IDE
 node_modules/
 __pycache__/
+*.pyc
+*.pyo
 *.log
 .vscode/
 .idea/
-uploads/
+.gemini/
