@@ -22,6 +22,8 @@
 ebiet/
 ├── assets/
 │   ├── portrait.png            # Ebiet Abdu Mubarok profile portrait
+│   ├── og-preview.jpg          # 1200x630 Open Graph thumbnail for social sharing
+│   ├── og-preview.png          # High-res social share banner
 │   ├── project-terra.jpg       # Case Study 01: Terra Systems B2B Brand System
 │   ├── project-amartha.jpg     # Case Study 02: Amartha Corp Rebranding & Guidelines
 │   ├── project-kol.jpg         # Case Study 03: End-to-End KOL Campaign Showcase
