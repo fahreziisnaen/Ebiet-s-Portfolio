@@ -32,8 +32,6 @@ ebiet/
 ├── favicon.svg                 # Vector monogram favicon
 ├── favicon.ico                 # Fallback favicon
 ├── index.html                  # Production web entry point (instant load, zero FOUC)
-├── Ebiet Mubarok - Portfolio.dc.html # Original design compiler source template
-├── support.js                  # Design compiler runtime support script
 ├── .gitignore                  # Git exclusion rules
 └── README.md                   # Project documentation
 ```
